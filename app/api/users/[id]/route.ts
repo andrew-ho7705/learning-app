@@ -1,5 +1,5 @@
 import connectMongoDB from "@/libs/mongodb";
-import { User } from "@/models/course";
+import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 
 export async function PUT(request: any, { params }: any) {
