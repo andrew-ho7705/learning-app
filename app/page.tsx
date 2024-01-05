@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <>User Courses UI</>
+    <>
+      <div className="text-3xl">Home Page</div>
+    </>
   )
 }

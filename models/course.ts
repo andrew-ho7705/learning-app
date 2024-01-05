@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const questionSchema = new Schema({
+    questionNum: Number,
     questionText: String,
     answers: [Number],
     answer: Number
