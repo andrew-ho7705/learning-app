@@ -1,45 +1,32 @@
+"use client";
 
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-type CourseParams = {
-    courseName: string;
-};
+const CourseQuizzes = ({ params }: { params: { courseName: string } }) => {
+    const [courses, setCourses] = useState<any>([]);
 
-export const CoursePage = async ({ params }: { params: CourseParams }) => {
-    const getCourseNames = async () => {
-        try {
+    useEffect(() => {
+        const fetchCourses = async () => {
             const res = await fetch("http://localhost:3000/api/courses", {
                 cache: "no-store",
             });
+            const coursesData = await res.json();
+            setCourses(coursesData.courses);
+        };
 
-            if (!res.ok) throw new Error("Failed to fetch classes");
-            return res.json();
-        } catch (error) {
-            console.log("Error: ", error);
-        }
-    };
-
-    const { courses } = await getCourseNames();
-
-    const filteredCourse = courses.filter(
-        (course: any) => course.course === params.courseName
-    );
+        fetchCourses();
+    }, []);
 
     return (
         <>
-            {filteredCourse.map((course: any) => {
-                const { quizzes } = course;
-                return quizzes.map((quiz: any) =>
-                    quiz.questions.map((question: any) => (
-                        <div key={question._id}>
-                            <div>
-                                {question.questionNum}. {question.questionText}
-                            </div>
-                        </div>
-                    ))
-                );
-            })}
+            {courses.map((course: any) =>
+                course.quizzes.map((quiz: any) => (
+                    <Link href={`http://localhost:3000/courses/math/${quiz.quizNum - 1}`} key={quiz._id}> Quiz {quiz.quizNum}</Link>
+                ))
+            )}
         </>
     );
 };
 
-export default CoursePage;
+export default CourseQuizzes;
