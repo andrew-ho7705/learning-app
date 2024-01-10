@@ -1,5 +1,6 @@
 "use client";
 
+import QuizCard from "@/components/QuizCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -20,11 +21,17 @@ const CourseQuizzes = ({ params }: { params: { courseName: string } }) => {
 
     return (
         <>
-            {courses.map((course: any) =>
-                course.quizzes.map((quiz: any) => (
-                    <Link href={`http://localhost:3000/courses/math/${quiz.quizNum - 1}`} key={quiz._id}> Quiz {quiz.quizNum}</Link>
-                ))
-            )}
+
+            <div className="flex space-x-5 py-5">
+                {courses.map((course: any) =>
+                    course.quizzes.map((quiz: any) => (
+                        <QuizCard key={quiz._id} quizNum={quiz.quizNum} />
+                    ))
+                )}
+            </div>
+            <Link href="http://localhost:3000/courses" className="absolute left-10 bottom-10">
+                Back To Courses
+            </Link>
         </>
     );
 };
