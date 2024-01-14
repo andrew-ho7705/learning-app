@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 export const metadata: Metadata = {
     title: "Learning App",
-    description: "Educational application for students in grade school"
+    description: "Educational application for students in grade school",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
         <html lang="en">
             <body className="m-5 bg-slate-400">
                 <NavBar />
-                {children}
+                    {children}
             </body>
         </html>
     );

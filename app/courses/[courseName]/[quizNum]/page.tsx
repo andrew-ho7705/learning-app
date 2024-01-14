@@ -5,6 +5,7 @@ import QuizPage from "./QuizPage";
 import { CourseParams } from "./QuizPage";
 import Link from "next/link";
 
+
 export const Quiz = ({ params }: { params: CourseParams }) => {
     const [questionNum, setQuestionNum] = useState(0);
 
@@ -12,7 +13,7 @@ export const Quiz = ({ params }: { params: CourseParams }) => {
     const prevQuestion = () => setQuestionNum(questionNum - 1);
 
     return (
-        <>
+        <div className="py-5">
             <QuizPage params={params} questionNum={questionNum} />
             <Link href={`http://localhost:3000/courses/${params.courseName}`} className="absolute left-10 top-5">
                 Back
@@ -26,7 +27,7 @@ export const Quiz = ({ params }: { params: CourseParams }) => {
                     Previous Question
                 </button>
             </div>
-        </>
+        </div>
     );
 };
 

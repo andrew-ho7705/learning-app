@@ -3,8 +3,8 @@ import mongoose, { Schema } from "mongoose";
 const questionSchema = new Schema({
     questionNum: Number,
     questionText: String,
-    answers: [Number],
-    answer: Number
+    answers: [Schema.Types.Mixed],
+    answer: Schema.Types.Mixed
 });
 
 const quizSchema = new Schema({

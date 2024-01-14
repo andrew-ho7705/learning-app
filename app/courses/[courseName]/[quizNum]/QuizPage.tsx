@@ -1,5 +1,6 @@
 "use client";
 
+import { filteredCourse } from "@/app/utils/utils";
 import { useEffect, useState } from "react";
 
 export type CourseParams = {
@@ -52,9 +53,7 @@ const QuizPage = ({
         }
     };
 
-    const currentCourse = courses.filter(
-        (course: any) => course.course === params.courseName
-    );
+    const currentCourse = filteredCourse(courses, params);
 
     return (
         <div key={currentCourse._id} className="pl-5 mt-10">

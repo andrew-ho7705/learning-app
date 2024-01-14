@@ -20,7 +20,7 @@ export const Courses = async () => {
 
     return (
         <>
-            <div className="space-x-5">Courses Page</div>
+            <div className="space-x-5 m-5">Courses Page</div>
             {courses.map((course: any) => (
                 <CourseCard key={course._id} courseName={course.course} />
             ))}
