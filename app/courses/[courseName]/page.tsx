@@ -1,12 +1,13 @@
 "use client";
 
+import { Course, Quiz } from "@/app/types";
 import { filteredCourse, formatName } from "@/app/utils/utils";
 import QuizCard from "@/components/QuizCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const CourseQuizzes = ({ params } : { params: { courseName: string }}) => {
-    const [courses, setCourses] = useState<any>([]);
+    const [courses, setCourses] = useState<Course[]>([]);
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -25,11 +26,11 @@ const CourseQuizzes = ({ params } : { params: { courseName: string }}) => {
     return (
         <>
             <div className="flex flex-col py-5 mx-5">
-                <div>Available {currentCourse.map((course: any) => formatName(course.course))} Quizzes</div>
+                <div>Available {currentCourse.map((course: Course) => formatName(course.course))} Quizzes</div>
                 <div className="flex mt-5 space-x-5">
-                {currentCourse.map((course: any) =>
-                    course.quizzes.map((quiz: any) => (
-                        <QuizCard key={quiz._id} courseName={params.courseName} quizNum={quiz.quizNum} />
+                {currentCourse.map((course: Course) =>
+                    course.quizzes.map((quiz: Quiz) => (
+                        <QuizCard key={quiz["._id"]} courseName={params.courseName} quizNum={quiz.quizNum} />
                     ))
                 )}
                 </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Course } from "@/app/types";
 import { filteredCourse } from "@/app/utils/utils";
 import { useEffect, useState } from "react";
 
@@ -15,7 +16,7 @@ const QuizPage = ({
     params: CourseParams;
     questionNum: number;
 }) => {
-    const [courses, setCourses] = useState<any>([]);
+    const [courses, setCourses] = useState<Course[]>([]);
     const [selected, setSelected] = useState<number | string | null>(null);
     const [score, setScore] = useState<number>(0);
 
@@ -56,25 +57,25 @@ const QuizPage = ({
     const currentCourse = filteredCourse(courses, params);
 
     return (
-        <div key={currentCourse._id} className="pl-5 mt-10">
+        <div key={currentCourse["._id"]} className="pl-5 mt-10">
             <span>Quiz #{+quizNum + 1}</span>
             <span className="absolute right-10">Score {score}/5</span>
-            {currentCourse.map((course: any) => {
+            {currentCourse.map((course: Course) => {
                 const { quizzes } = course;
                 const currentQuestion = quizzes[quizNum].questions[questionNum];
                 return (
-                    <div key={quizzes._id}>
-                        <div key={quizzes[quizNum]._id}>
+                    <div key={quizzes[quizNum]["._id"]}>
+                        <div key={quizzes[quizNum]["._id"]}>
                             Question #{currentQuestion.questionNum}
-                            <div key={quizzes[quizNum].questions._id}>
+                            <div key={currentQuestion["._id"]}>
                                 {currentQuestion.questionText}
                             </div>
-                            <div key={quizzes[quizNum]._id} className="flex-1">
+                            <div key={quizzes[quizNum]["._id"]} className="flex-1">
                                 {currentQuestion.answers.map(
                                     (option: number | string, idx: number) => (
                                         <button
                                             key={idx}
-                                            className={`border w-32 h-16 m-8 rounded-2xl ${
+                                            className={`border h-16 m-8 rounded-2xl w-fit px-3 ${
                                                 selected === option
                                                     ? "border-red-500"
                                                     : "border-black"

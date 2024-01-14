@@ -1,5 +1,6 @@
 import CourseCard from "@/components/CourseCard";
 import Link from "next/link";
+import { Course } from "../types";
 
 export const Courses = async () => {
     const getCourseNames = async () => {
@@ -21,10 +22,15 @@ export const Courses = async () => {
     return (
         <>
             <div className="space-x-5 m-5">Courses Page</div>
-            {courses.map((course: any) => (
-                <CourseCard key={course._id} courseName={course.course} />
-            ))}
-            <Link href="http://localhost:3000" className="absolute left-10 bottom-10">
+            <div className="flex">
+                {courses.map((course: Course) => (
+                    <CourseCard key={course["._id"]} courseName={course.course} />
+                ))}
+            </div>
+            <Link
+                href="http://localhost:3000"
+                className="absolute left-10 bottom-10"
+            >
                 Back To Home
             </Link>
         </>
