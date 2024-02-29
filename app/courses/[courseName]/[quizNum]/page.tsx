@@ -6,7 +6,7 @@ import { CourseParams } from "./QuizPage";
 import Link from "next/link";
 
 
-export const Quiz = ({ params }: { params: CourseParams }) => {
+const Quiz = ({ params }: { params: CourseParams }) => {
     const [questionNum, setQuestionNum] = useState(0);
 
     const nextQuestion = () => setQuestionNum(questionNum + 1);

@@ -2,7 +2,7 @@ import CourseCard from "@/components/CourseCard";
 import Link from "next/link";
 import { Course } from "../types";
 
-export const Courses = async () => {
+const Courses = async () => {
     const getCourseNames = async () => {
         try {
             const res = await fetch("http://localhost:3000/api/courses", {
